@@ -1,18 +1,36 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const uploadSchema = new mongoose.Schema(
+const uploadSchema = new Schema(
   {
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     source: String,
     latitude: String,
     longitude: String,
-    googleVision: [
-      {
-        rank: Number,
-        description: String,
-        score: Number
-      }
-    ],
-    matches: [
+    matches: {
+      google: [
+        {
+          rank: Number,
+          description: String,
+          score: Number
+        }
+      ],
+      aws: [
+        {
+          rank: Number,
+          description: String,
+          score: Number
+        }
+      ],
+      azure: [
+        {
+          rank: Number,
+          description: String,
+          score: Number
+        }
+      ]
+    },
+    results: [
       {
         rank: Number,
         description: String,

@@ -18,9 +18,6 @@ const passport = require('passport')
 const expressValidator = require('express-validator')
 const expressStatusMonitor = require('express-status-monitor')
 const sass = require('node-sass-middleware')
-const multer = require('multer')
-const multerS3 = require('multer-s3')
-const googleVisionApi = require('./controllers/googleVision')
 const AWS = require('aws-sdk')
 
 /*
@@ -31,34 +28,6 @@ AWS.config.update({ region: 'us-west-2' })
 
 // Create S3 service object
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
-
-const uploadUnprocessed = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: 'captain-planet-user-images-unprocessed',
-    metadata: function(req, file, cb) {
-      cb(null, { fieldName: file.fieldname })
-    },
-    key: function(req, file, cb) {
-      cb(null, `${req.user.id}/${Date.now()}`)
-    }
-  }),
-  limits: { fileSize: 10000000, files: 1 }
-})
-
-const uploadProcessed = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: 'captain-planet-user-images-2',
-    metadata: function(req, file, cb) {
-      cb(null, { fieldName: file.fieldname })
-    },
-    key: function(req, file, cb) {
-      cb(null, `${req.user.id}/${Date.now()}`)
-    }
-  }),
-  limits: { fileSize: 10000000, files: 1 }
-})
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -73,13 +42,27 @@ const userController = require('./controllers/user')
 const apiController = require('./controllers/api')
 const contactController = require('./controllers/contact')
 // const s3Controller = require('./controllers/s3')(s3)
-const uploadController = require('./controllers/uploads')
-const AWSRekognitionController = require('./controllers/AWSRekognition')
 
 /**
  * API keys and Passport configuration.
  */
 const passportConfig = require('./config/passport')
+
+// const multer = require('multer')
+// const multerS3 = require('multer-s3')
+// const upload = multer({
+//   storage: multerS3({
+//     s3,
+//     bucket: 'captain-planet-user-images-2',
+//     metadata: function(req, file, cb) {
+//       cb(null, { fieldName: file.fieldname })
+//     },
+//     key: function(req, file, cb) {
+//       cb(null, `${req.user.id}/${Date.now()}`)
+//     }
+//   }),
+//   limits: { fileSize: 10000000, files: 1 }
+// })
 
 /**
  * Create Express server.
@@ -108,6 +91,7 @@ app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0')
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
+app.set('json spaces', 2)
 app.use(expressStatusMonitor())
 app.use(compression())
 app.use(
@@ -117,8 +101,8 @@ app.use(
   })
 )
 app.use(logger('dev'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }))
 app.use(expressValidator())
 app.use(
   session({
@@ -198,6 +182,10 @@ app.get(
 /**
  * API examples routes.
  */
+require('./routes')(app, s3, passportConfig)
+/**
+ * API examples routes.
+ */
 app.get('/api', apiController.getApi)
 app.get('/api/lastfm', apiController.getLastfm)
 app.get('/api/nyt', apiController.getNewYorkTimes)
@@ -267,19 +255,8 @@ app.get('/api/paypal', apiController.getPayPal)
 app.get('/api/paypal/success', apiController.getPayPalSuccess)
 app.get('/api/paypal/cancel', apiController.getPayPalCancel)
 app.get('/api/lob', apiController.getLob)
-// app.get('/api/upload', apiController.getFileUpload)
+app.get('/api/upload', apiController.getFileUpload)
 // app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload)
-app.get('/api/uploads', uploadController.getUploads)
-app.post(
-  '/api/uploads',
-  uploadUnprocessed.single('myFile')
-  /* hit google vision api */
-  /* hit other api */
-  /* hit other api */
-  // uploadController.createUploads
-  // write to uploads collection
-  // respond to user with result
-)
 app.get(
   '/api/pinterest',
   passportConfig.isAuthenticated,
