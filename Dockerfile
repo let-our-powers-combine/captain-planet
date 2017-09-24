@@ -1,10 +1,10 @@
-FROM node:6-slim
+FROM node:8-slim
 
-COPY . /starter
-COPY package.json /starter/package.json
-COPY .env.example /starter/.env.example
+COPY . /home
+COPY package.json /home/package.json
+COPY .env.example /home/.env.example
 
-WORKDIR /starter
+WORKDIR /home
 
 ENV NODE_ENV production
 RUN npm install --production

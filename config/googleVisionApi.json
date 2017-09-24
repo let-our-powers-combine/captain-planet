@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sturdy-now-180821",
+  "private_key_id": "d460356a46f64b82cc71a646fd57303f2b589c5a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC1/zx2wA/xxLza\n+1rMm/dRHqothYXuFVPI8i48aSnLA0t3lh+3G7ScjpGunRfGGF9E+cGHiiWVcN2G\n3ndP2DgQfaPyKDm82VMRf4dkjrZhSTly4nV1ndW13fwBz5PwcjjgFDgtQWdeuG6q\n+8hGy/pici87cMMOrOvITGm9ahmx6zv6M5FLHKjPE53/VMaIbaPC4/GI5NAnNnc9\n9Rvnc/DfgUCJ1P3QWFp6OJId6r/NwMAqetsC4TkRHBtG2P1Nuoejg2yYfyVWH7LA\nc9WaFYJL6kEp5XRvCESo1quqEJXJWfEMTnBQ3NOu8xcCMmr5xDIkBO7kbZgkQQAW\nkEOny1a/AgMBAAECggEAMQhFSXcANLI88UBj25kvfe7liWMeTKD5VDuPIl5w0I2g\nMOVEwSfZNo6giCsxowCg9ivVrIcXDhZ80F+yRFQr8qFu4Ihe2daxLxctKnXahAZe\n0GlbnOb7k0ZtpS1AHbkgQpqf8e1bhKTqx+0SraQ53nkF6Z09KACFe46+tDXYG1sg\nM8hnnw1KeVUaaAAuzQkvc0V//1iiSbINEsAWCV2KgDWbv14+YkDkqXDSUDeefReb\nIjRbbMX082P2WcpdBhp4qkiO0uXBLK4PbFa+UNLDFqVaW5VWIilcpAynLH0fdPCr\nV7sbZcGOToYyBDOZ9pbkIer+IKPFGCnqxOqhqobPlQKBgQD0kfw6FbVQlgkcoFLd\n8b38Zwd1lPI+U2vwqviqAf3N6TXyvV6JV5XwzV9x6VvNyfRESxSlnf59hdbv8yE2\nAUzxoVf0cAOk2ub1MrvGw2md+3qoi5s3xetq3Avq1ryZXDYBo7u3i+iFTtqz6zmz\ntWJz/0deGKs2z9DsGTEdXbFBwwKBgQC+gKF7N5+QUxZTZMFGeR+BeyaP/h3arBwk\ntZtxayegfXG0c4ilvw2p0h4qeisrCxGPh1cbKArvUIlPhRc/0GAercLbsZyqxo34\nhamUHI/0J9UjpFy6J+uUP/7/LunTaHK5tLq47kqYcvrlTHasOw3KdLM94cq4jmWj\nzLFqSXxrVQKBgD++IMgeylADmsJcQtzX2dWEINyTgoOeCH8EgKUGudjGFKp8krwn\nGMxXKq4szSGYplJ6Yxo7UI30qS2G57wEoMJFdAAghcKczx9PJsPKQKfNWI2/PShP\nLGmAipadezBZaTYKL63KCENeZwAHqdVdzBhBi59JvK4fgetXMYbe2YkzAoGAb0Zh\njMDD4qC11MZwowKTJaXSs59Cvv1zfvnZr1lhDzzXEwm9UtuTVpPWbQdpeb4AZu8u\nMT2ljX5khl9+YhcMXj8vJ/bKRXKvcPBaSpqYd4xg0m3qgA5bbAApqdM0X/mNse3g\nd68xQXVAGnocg6QG/TBHlqjyKfV7Zz9kjmoYU/UCgYB8u9QKWLJI8ddXsQmJWP6f\nViPLg2ORS0Kjnv7DYws91vic0SFQ0f2SAG2X0fL5rdcGFLVEAOfmEOIDBaeqSfdd\ndt2pA6AizUfoZsJrM65v/0fSsLR5kS/Ddc8rDVjA9CetKYE/CdfQIZY0IztFvgS6\nAZaDxhYQ3Z/8VpgsIDrZug==\n-----END PRIVATE KEY-----\n",
+  "client_email": "captain-planet@sturdy-now-180821.iam.gserviceaccount.com",
+  "client_id": "112524384224774898176",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/captain-planet%40sturdy-now-180821.iam.gserviceaccount.com"
+}
