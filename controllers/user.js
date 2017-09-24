@@ -116,7 +116,7 @@ exports.postSignup = (req, res, next) => {
           return next(err)
         }
         res.cookie('user', user, { maxAge: 900000, httpOnly: false })
-        res.redirect('/')
+        res.redirect('http://localhost:3001' || req.session.returnTo)
       })
     })
   })
