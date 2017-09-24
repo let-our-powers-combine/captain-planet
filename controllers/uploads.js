@@ -1,3 +1,5 @@
+const Uploads = require('../models/Uploads')
+
 /**
  * GET /api/uploads
  * File Uploads API example.

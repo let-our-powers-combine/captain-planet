@@ -27,10 +27,10 @@ const AWS = require('aws-sdk')
  * Configure AWS stuffs..
  */
 // Set AWS Region
-AWS.config.update({ region: 'us-west-1' })
+AWS.config.update({ region: 'us-west-2' })
 
 // Create S3 service object
-s3 = new AWS.S3({ apiVersion: '2006-03-01' })
+const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
 
 const uploadUnprocessed = multer({
   storage: multerS3({
@@ -49,7 +49,7 @@ const uploadUnprocessed = multer({
 const uploadProcessed = multer({
   storage: multerS3({
     s3: s3,
-    bucket: 'captain-planet-user-images',
+    bucket: 'captain-planet-user-images-2',
     metadata: function(req, file, cb) {
       cb(null, { fieldName: file.fieldname })
     },
@@ -72,8 +72,9 @@ const homeController = require('./controllers/home')
 const userController = require('./controllers/user')
 const apiController = require('./controllers/api')
 const contactController = require('./controllers/contact')
-const s3Controller = require('./controllers/s3')(s3)
+// const s3Controller = require('./controllers/s3')(s3)
 const uploadController = require('./controllers/uploads')
+const AWSRekognitionController = require('./controllers/AWSRekognition')
 
 /**
  * API keys and Passport configuration.

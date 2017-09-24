@@ -28,7 +28,7 @@ module.exports = s3 => {
   const getUserImages = (req, res) => {
     const userId = req.userId
     const params = {
-      Bucket: 'captain-planet-user-images',
+      Bucket: 'captain-planet-user-images-2',
       prefix: userId
     }
     s3.listObjects(params, (err, data) => {
@@ -42,7 +42,7 @@ module.exports = s3 => {
 
   const getAllUserImages = (req, res) => {
     const params = {
-      Bucket: 'captain-planet-user-images'
+      Bucket: 'captain-planet-user-images-2'
     }
     s3.listObjects(params, (err, data) => {
       if (err) {
