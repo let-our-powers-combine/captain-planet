@@ -13,6 +13,6 @@ services:
     depends_on: 
      - mongo 
     volumes:
-     - .:/starter
-     - /starter/node_modules
+     - .:/home
+     - /home/node_modules
      
