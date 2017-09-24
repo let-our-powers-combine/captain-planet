@@ -27,35 +27,25 @@ exports.postLogin = (req, res, next) => {
   req.sanitize('email').normalizeEmail({ gmail_remove_dots: false })
 
   const errors = req.validationErrors()
-  console.log('\n - # -2')
   if (errors) {
-    console.log('\n - # -1', errors)
     req.flash('errors', errors)
     return res.redirect('/login')
   }
-  console.log('\n - # 1')
   passport.authenticate('local', (err, user, info) => {
-    console.log('\n - # 2')
     if (err) {
-      console.log('\n - # 3')
       return next(err)
     }
-    console.log('\n - # 4')
     if (!user) {
-      console.log('\n - # 5')
       req.flash('errors', info)
       return res.redirect('/login')
     }
-    console.log('\n - # 6')
     req.logIn(user, err => {
-      console.log('\n - # 7')
       if (err) {
-        console.log('\n - # 8')
         return next(err)
       }
-      console.log('\n - # 9', req.session.returnTo)
+      res.cookie('user', req.user, { maxAge: 900000, httpOnly: false })
       req.flash('success', { msg: 'Success! You are logged in.' })
-      res.redirect(req.session.returnTo || '/')
+      res.redirect('http://localhost:3001' || req.session.returnTo)
     })
   })(req, res, next)
 }
@@ -125,6 +115,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err)
         }
+        res.cookie('user', user, { maxAge: 900000, httpOnly: false })
         res.redirect('/')
       })
     })

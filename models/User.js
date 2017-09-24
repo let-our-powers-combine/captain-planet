@@ -11,7 +11,7 @@ const userSchema = new Schema(
     passwordResetToken: String,
     passwordResetExpires: Date,
 
-    uploads: [{ type: Schema.Types.ObjectId, ref: 'Upload' }],
+    uploads: [{ type: String, ref: 'Upload' }],
 
     facebook: String,
     twitter: String,

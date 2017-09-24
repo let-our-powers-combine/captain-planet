@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk')
-const rekognition = new AWS.Rekognition({ apiVersion: '2016-06-27' })
 AWS.config.update({ region: 'us-west-2' })
+
+const rekognition = new AWS.Rekognition({ apiVersion: '2016-06-27' })
 // AWS.config.loadFromPath('./config/AWSRekognition.json')
 exports.getRekognition = (req, res, next) => {
   req.upload = req.upload || {}

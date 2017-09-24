@@ -1,4 +1,5 @@
 const Uploads = require('../models/Uploads')
+const Users = require('../models/User')
 
 /**
  * GET /api/uploads
@@ -13,6 +14,7 @@ exports.getUploadsByUser = (req, res) => {
 
 exports.createUploads = (req, res) => {
   const newUpload = {
+    user: req.user.id,
     source: req.file.location,
     latitude: req.params.latitude || 0,
     longitude: req.params.longitude || 0,
@@ -44,6 +46,14 @@ exports.createUploads = (req, res) => {
       console.log(error, err)
       res.status(500).json({ error: 'Something failed!' })
     }
-    res.json({ uploaded: upload })
+    Users.findById(req.user.id, (err, user) => {
+      if (err) {
+        console.error('There was an error finding user by id')
+        res.status(500).json({ error: 'Something failed!' })
+      }
+      user.uploads.push(upload.source)
+      user.save()
+      res.json({ uploaded: upload })
+    })
   })
 }
