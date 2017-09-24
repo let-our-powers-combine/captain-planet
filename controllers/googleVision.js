@@ -24,5 +24,5 @@ exports.getImageAnnotation = (req, res, next) => {
 
 exports.getImageAnnotation({
   imageUri:
-    'https://s3-us-west-1.amazonaws.com/captain-planet-user-images/IMG_1188-min.JPG'
+    'https://s3-us-west-2.amazonaws.com/captain-planet-user-images-2/IMG_1188-min.JPG'
 })
