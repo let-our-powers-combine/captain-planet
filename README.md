@@ -8,7 +8,7 @@ When logged into ECOgnize, the user can upload their images and receive species,
 
 ![screen shot 2017-09-24 at 12 52 04 am](https://user-images.githubusercontent.com/17747867/30784738-b59b213a-a10f-11e7-8f14-ebc9607d7d6b.png)
 
-When uploading images, locations pins are dropped onto the Google maps API to show where these images are captured. 
+When uploading images, location pins are dropped onto the Google maps API to show where these images were captured. 
 
 ![screen shot 2017-09-24 at 9 42 31 am](https://user-images.githubusercontent.com/17747867/30784789-e91ae698-a110-11e7-8959-df3b3b7b9eb0.png)
 
